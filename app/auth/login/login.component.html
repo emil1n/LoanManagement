@@ -1,0 +1,41 @@
+<div class="container-fluid login-container">
+
+    <div>
+        <div class="mb-5 mt-3 d-flex justify-content-center ">
+            <img src="./../../../assets/src/logo1.png " alt="Logo " width="250 ">
+        </div>
+
+        <form [formGroup]="loginForm " (ngSubmit)="loginCredentials() ">
+            <div class='form-group d-flex flex-row'>
+                <i class="fa-lg fa fa-regular fa-user mt-3 mr-3 "></i>
+                <input type="text " placeholder="Enter user name " formControlName="userName" class="form-control " />
+            </div>
+            <div *ngIf="isSubmitted && formControls.userName.errors ">
+                <div class="validation-error " *ngIf="formControls.userName.errors.required ">
+                    User name is invalid or required
+                </div>
+            </div>
+            <br>
+            <div class='form-group d-flex flex-row'>
+                <i class="fa fa-lock fa-lg mt-3 mr-3 "></i>
+                <input type="password " placeholder="Enter password " formControlName="password" class="form-control " />
+            </div>
+            <div *ngIf="isSubmitted && formControls.password.errors ">
+                <div class="validation-error " *ngIf="formControls.password.errors.required ">
+                    password is invalid or required
+                </div>
+            </div>
+
+            <br>
+            <div class="btn-submit">
+                <button type="submit " class="btn btn-size btn-outline-secondary form-control ">
+                    Log In
+                </button>
+            </div>
+
+            <div class="validation-error " *ngIf="error ">
+                {{error}}
+            </div>
+        </form>
+    </div>
+</div>

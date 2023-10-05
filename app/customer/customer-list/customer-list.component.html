@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="header">
+        <div class="row">
+            <div class="input-group my-4 mx-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                </div>
+
+                <input type="search" [(ngModel)]="searchTerm" class="form-control" placeholder="Enter search text here"
+                    aria-label="search" aria-describedby="basic-addon1">
+            </div>
+        </div>
+
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>customerId</th>
+                            <th>customerName</th>
+                            <th>customerMob</th>
+                           <th>loanId</th> 
+                           <th>loanFrom</th>
+                           <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr
+                            *ngFor='let customer of customerService.customers | filter:searchTerm | paginate: {itemsPerPage: pageSize,currentPage: page}'>
+                            <ng-container *ngIf="customer.active">
+                                <td>{{customer.customerId}}</td>
+                                <td>{{customer.customerName}}</td>
+                                <td>{{customer.customerMob}}</td>
+                                <td>{{customer.loanId}}</td>
+                                <td>{{customer.loanFrom}}</td>
+
+                                <td><button class="btn btn-sm btn-outline-info"
+                                        (click)="updateCustomerDetails(customer)"><i class="fa fa-edit"></i></button>
+                                    &nbsp;
+                                    <button class="btn btn-sm btn-outline-danger"
+                                        (click)="deleteCustomerDetails(customer.customerId)"><i
+                                            class="fa fa-trash"></i></button>
+
+                            </ng-container>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div class="footer">
+                    <pagination-controls class="custom-page" (pageChange)="page = $event"></pagination-controls>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

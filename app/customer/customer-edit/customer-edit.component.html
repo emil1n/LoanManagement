@@ -1,0 +1,81 @@
+
+<div class="container">
+
+    <h3>New customer Details</h3>
+    <hr>
+
+    <form name="frmcustomerDetails" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+
+        <!--id-->
+        <div class="form-group">
+            <input type="hidden" name="customerId" readonly [(ngModel)]="CustomerService.formData.customerId">
+        </div>
+
+        <!--  Name -->
+        <div class="form-group">
+            <label for="customerName">customer Name</label>
+            <input type="text" name="customerName" [(ngModel)]="CustomerService.formData.customerName"
+                #vendorName="ngModel" class="form-control" placeholder="Enter  Name" maxlength="25" required
+                [ngClass]="{'is-invalid' : customerName.touched && customerName.invalid}">
+
+            <div class="alert alert-danger" *ngIf="customerName.touched && customerName.invalid">
+                <div *ngIf="customerName.errors.required">customer Name is required</div>
+            </div>
+        </div>
+
+        <!-- mobile -->
+        <div class="form-group">
+            <label for="customerMob">customer Mobile</label>
+            <input type="text" name="customerMob" [(ngModel)]="CustomerService.formData.customerMob"
+                #vendorName="ngModel" class="form-control" placeholder="Enter  Mobile" maxlength="25" required
+                [ngClass]="{'is-invalid' : customerMob.touched && customerMob.invalid}">
+
+            <div class="alert alert-danger" *ngIf="customerMob.touched && customerMob.invalid">
+                <div *ngIf="customerMob.errors.required">customer Mobile is required</div>
+            </div>
+        </div>
+
+        <!-- loan 1d-->
+        <div class="form-group">
+            <label for="loanId">Loan Id</label>
+            <input type="text" name="loanId" [(ngModel)]="CustomerService.formData.loanId" #assetTypeId="ngModel"
+                class="form-control" placeholder="Enter loan Id" maxlength="25" required
+                [ngClass]="{'is-invalid' : loanId.touched && loanId.invalid}">
+
+            <div class="alert alert-danger" *ngIf="assetTypeId.touched && assetTypeId.invalid">
+                <div *ngIf="loanId.errors.required">Loan Id is required</div>
+            </div>
+        </div>
+
+        <!--valid from-->
+        <div class="form-group">
+            <label for="loanFrom">Vendor Valid From</label>
+            <input type="date" name="loanFrom" [(ngModel)]="CustomerService.formData.loanFrom"
+                #vendorValidFrom="ngModel" class="form-control" placeholder="Enter Vendor Valid From" required
+                [ngClass]="{'is-invalid' : loanFrom.touched && loanFrom.invalid}">
+
+            <div class="alert alert-danger" *ngIf="loanFrom.touched && loanFrom.invalid">
+                <div *ngIf="loanFrom.errors.required">Vendor Valid From is required</div>
+            </div>
+        </div>
+        <!-- is Active -->
+        <div class="form-group">
+            <div class="form-check">
+                <input type="checkbox" name="isActive" [(ngModel)]="vendorDetailsService.formData.isActive"
+                    class="form-check-input">
+                <label class="form-check-label">Is Active</label><br>
+            </div>
+        </div>
+        <!-- Submit -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-outline-primary form-control"
+                [disabled]="!(form.valid && form.dirty)">update</button>
+            <br><br>
+            <button type="reset" class="btn btn-lg btn-outline-secondary form-control">Reset</button>
+
+        </div>
+
+
+
+    </form>
+</div>

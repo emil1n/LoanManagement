@@ -1,0 +1,22 @@
+.login-container {
+    max-width: 400px;
+    border: 1px solid rgb(35, 55, 55);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgb(119, 161, 161);
+    margin-top: 10%;
+    background-color: rgba(243, 246, 247, 0.496);
+}
+
+.btn-size {
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
